@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical Mobile Apps</title>
+<meta name="description" content="Practical mobile apps for drivers, finance, calculations and everyday business needs.">
+<meta property="og:title" content="Practical Mobile Apps">
+<meta property="og:description" content="Practical mobile apps for drivers, finance, calculations and everyday business needs.">
+<meta property="og:image" content="https://jezierczak.github.io/banner.jpg">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{
+  --bg:#f4f8ff; --card:#ffffff; --text:#0b1f3a; --muted:#51647f; --line:#d9e4f5;
+  --blue:#1e7bff; --navy:#0b2a5b; --sun:#ff8a1f;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#07142b; --card:#0e2142; --text:#eaf1ff; --muted:#9fb2d1; --line:#1c3560; --blue:#4a9bff;}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--blue)}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;gap:12px;padding:14px 0}
+header img{width:44px;height:44px;border-radius:12px}
+header b{font-size:18px;flex:1}
+.lang button{border:1px solid var(--line);background:var(--card);color:var(--text);padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
+.lang button:first-child{border-radius:8px 0 0 8px}
+.lang button:last-child{border-radius:0 8px 8px 0;border-left:0}
+.lang button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.hero img{width:100%;height:auto;display:block;border-radius:18px;box-shadow:0 10px 30px rgba(11,42,91,.25)}
+h2{font-size:22px;margin:40px 0 4px}
+.sub{color:var(--muted);margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.app{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.app .top{display:flex;align-items:center;gap:12px}
+.app img{width:56px;height:56px;border-radius:14px}
+.app h3{margin:0;font-size:18px}
+.app p{margin:0;color:var(--muted);font-size:15px;flex:1}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.btn{display:inline-block;padding:8px 14px;border-radius:10px;background:var(--blue);color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+.btn.alt{background:transparent;color:var(--blue);border:1px solid var(--line)}
+.contact{background:linear-gradient(135deg,var(--navy),#1e7bff);color:#fff;border-radius:18px;padding:22px;margin-top:40px}
+.contact h2{margin:0 0 4px}
+.contact a{color:#ffd08a;font-weight:600}
+footer{color:var(--muted);font-size:14px;padding:28px 0 40px;text-align:center}
+[data-l]{display:none}
+html[lang=pl] [data-l=pl],html[lang=en] [data-l=en]{display:revert}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="icon-192.png" alt="">
+    <b>Practical Mobile Apps</b>
+    <div class="lang"><button id="b-pl">PL</button><button id="b-en">EN</button></div>
+  </header>
+
+  <div class="hero"><img src="banner.jpg" alt="Practical mobile apps - for drivers, finance, calculations and everyday business needs"></div>
+
+  <h2 data-l="pl">Aplikacje</h2><h2 data-l="en">Apps</h2>
+  <p class="sub" data-l="pl">Proste, szybkie narzędzia na co dzień.</p>
+  <p class="sub" data-l="en">Simple, fast everyday tools.</p>
+
+  <div class="grid" id="apps"></div>
+
+  <div class="contact">
+    <h2 data-l="pl">Kontakt</h2><h2 data-l="en">Contact</h2>
+    <p data-l="pl" style="margin:0">Pytania, uwagi lub pomysły? Napisz: <a href="mailto:jezierczak@gmail.com">jezierczak@gmail.com</a></p>
+    <p data-l="en" style="margin:0">Questions, feedback or ideas? Write to: <a href="mailto:jezierczak@gmail.com">jezierczak@gmail.com</a></p>
+  </div>
+
+  <footer>© <span id="y"></span> Practical Mobile Apps</footer>
+</div>
+
+<script>
+// Dodanie aplikacji = jeden wpis w tej tablicy (ikona: plik w repo, play: link do Google Play)
+var APPS=[
+  {name:"Kursy Walut / Fast Currency Calculator", icon:"app-kursywalut.png",
+   pl:"Szybki kalkulator walut z kursami NBP, wykresami, widgetami i alertami.",
+   en:"Fast currency calculator with live rates, charts, widgets and alerts.",
+   play:"https://play.google.com/store/apps/details?id=com.finance.jarek.kursywalut",
+   privacy:"https://jezierczak.github.io/kursywalut-privacy/"},
+  {name:"TachoMobile 2", icon:"app-tachomobile.png",
+   pl:"Asystent czasu pracy kierowcy: limity jazdy, przerwy, trasa i analityka.",
+   en:"Driver working-time assistant: driving limits, breaks, route and analytics.",
+   site:"https://tachomobile.app/",
+   privacy:"https://jezierczak.github.io/tachomobile-legal/"},
+  {name:"DutyPal", icon:"app-dutypal.png",
+   pl:"Dziennik czasu pracy (HOS) dla kierowców w USA: statusy, zegary jazdy i raporty PDF.",
+   en:"Hours of Service logbook for US commercial drivers: duty status log, live clocks and PDF reports.",
+   play:"https://play.google.com/store/apps/details?id=com.productive.jarek.dutypal",
+   site:"https://dutypal.app/",
+   privacy:"https://dutypal.app/privacy-policy.html"}
+];
+var L=(function(){try{return localStorage.getItem("lang")}catch(e){}})()||(/^pl/i.test(navigator.language)?"pl":"en");
+function setLang(l){
+  L=l;document.documentElement.lang=l;
+  try{localStorage.setItem("lang",l)}catch(e){}
+  document.getElementById("b-pl").className=l=="pl"?"on":"";
+  document.getElementById("b-en").className=l=="en"?"on":"";
+  render();
+}
+function render(){
+  var h="";
+  APPS.forEach(function(a){
+    h+='<div class="app"><div class="top"><img src="'+a.icon+'" alt=""><h3>'+a.name+'</h3></div><p>'+a[L]+'</p><div class="btns">'
+      +(a.play?'<a class="btn" href="'+a.play+'">Google Play</a>':'')
+      +(a.site?'<a class="btn alt" href="'+a.site+'">'+(L=="pl"?"Strona":"Website")+'</a>':'')
+      +(a.privacy?'<a class="btn alt" href="'+a.privacy+'">'+(L=="pl"?"Prywatność":"Privacy")+'</a>':'')
+      +'</div></div>';
+  });
+  document.getElementById("apps").innerHTML=h;
+}
+document.getElementById("b-pl").onclick=function(){setLang("pl")};
+document.getElementById("b-en").onclick=function(){setLang("en")};
+document.getElementById("y").textContent=new Date().getFullYear();
+setLang(L);
+</script>
+</body>
+</html>
