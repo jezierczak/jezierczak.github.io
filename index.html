@@ -87,7 +87,7 @@ var APPS=[
    en:"Driver working-time assistant: driving limits, breaks, route and analytics.",
    play:"https://play.google.com/store/apps/details?id=com.productive.jarek.tachomobile",
    site:"https://tachomobile.app/",
-   privacy:"https://jezierczak.github.io/tachomobile-legal/"},
+   privacy:"https://tachomobile.app/{l}/privacy-policy.html"},
   {name:"DutyPal", icon:"app-dutypal.png",
    pl:"Dziennik czasu pracy (HOS) dla kierowców w USA: statusy, zegary jazdy i raporty PDF.",
    en:"Hours of Service logbook for US commercial drivers: duty status log, live clocks and PDF reports.",
@@ -109,7 +109,7 @@ function render(){
     h+='<div class="app"><div class="top"><img src="'+a.icon+'" alt=""><h3>'+a.name+'</h3></div><p>'+a[L]+'</p><div class="btns">'
       +(a.play?'<a class="btn" href="'+a.play+'">Google Play</a>':'')
       +(a.site?'<a class="btn alt" href="'+a.site+'">'+(L=="pl"?"Strona":"Website")+'</a>':'')
-      +(a.privacy?'<a class="btn alt" href="'+a.privacy+'">'+(L=="pl"?"Prywatność":"Privacy")+'</a>':'')
+      +(a.privacy?'<a class="btn alt" href="'+a.privacy.replace("{l}",L)+'">'+(L=="pl"?"Prywatność":"Privacy")+'</a>':'')
       +'</div></div>';
   });
   document.getElementById("apps").innerHTML=h;
